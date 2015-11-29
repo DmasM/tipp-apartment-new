@@ -1,0 +1,249 @@
+@font-face{
+	font-family: Cabin-Regular;
+	src: url("../fonts/Cabin-Regular.otf");
+}
+@mixin transition($trans){
+	-webkit-transition: $trans;
+	-moz-transition: $trans;
+	-ms-transition: $trans;
+	transition:$trans;
+}
+@mixin flex($num){
+	-webkit-flex:$num;
+	-ms-flex:$num;
+	flex:$num;
+}
+@mixin displayFlex($flex){	
+	display:-ms-flexbox;
+	display:-webkit-flex;
+	display:$flex;
+}
+@mixin flex-direction($dir){
+	-webkit-flex-direction:$dir;
+	flex-direction:$dir;
+}
+$lightgray:#eee;
+$darkgray:#c9c9c9;
+$colorBack:#568e6d;
+$darkgreen:#1e5843;
+$dark: #5a5a5a;
+$grayBorder:#dedede;
+$font1:'Cabin-Regular', sans-serif;
+
+*{
+	font-family: 'Cabin-Regular', sans-serif;
+}
+
+body{
+	background: $lightgray;
+	
+}
+ul{
+	list-style-type: circle;
+	li{
+		margin-bottom:15px;
+	}
+}
+.list-cell{
+	width:80%;
+	margin:0 auto;
+}
+p{
+	color:$dark;
+	line-height: 37px;
+}
+a{
+	text-decoration: none;
+}
+.center{
+	text-align: center;
+}
+
+/***********INPUT*************/
+input[type="text"], input[type="password"], input[type="number"]{
+	outline:none;
+	height:40px;
+	width:100%;
+	padding:0 10px;
+	border:2px solid $grayBorder;
+	border-radius:3px;
+	@include transition(.2s all ease-in-out);	
+	color:$dark;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus{
+	border:2px solid $colorBack;
+}
+select{
+	@extend input[type="text"];
+}
+
+textarea{
+	@extend input[type="text"];
+	height:130px;
+	width:100%;
+	padding:10px;
+}
+
+/*******MENU***********/
+
+.left-menu{	
+	width:230px;
+	height:100%;
+	position:fixed;	
+	left:0;
+	top:0;
+	background: #fff;
+	z-index:1000;	
+	@include displayFlex(flex);
+	@include flex-direction(column);
+	justify-content: space-between;	
+	ul{
+	list-style-type: none;
+	li{
+		margin-bottom:15px;
+		width:auto;
+		text-align: right;
+		padding-right:25px;
+		a{			
+			color:$darkgray;
+			@include transition(all .1s ease-in-out);
+		}
+		a:hover{
+			color:$colorBack;
+		}
+	}
+}
+}
+p.menu-contact{
+	font-size:.8em;
+	text-align:center;
+	line-height: 20px;
+	a{
+		color:$darkgray;
+		@include transition(all .1s ease-in-out);
+	}
+	a:hover{
+		color:$colorBack;
+	}
+}
+
+
+/*********Main Content***********/
+.wrapper{
+	@include displayFlex(flex);
+	@include flex-direction(row);
+}
+#left-wrapper{
+	flex: 0 0 230px;
+	height:100%;
+}
+.header{	
+	background-image:url(../images/tipp_apartment_2.jpg);
+	background-size:cover;
+	background-position:center;	
+	height:600px;
+}
+#image-slider .item img{
+	display:flex;
+	width:100%;	
+	height:auto;
+}
+.main-container{	
+	width:100%;
+	@include displayFlex(flex);
+	@include flex-direction(column);
+}
+.main-content{
+	padding:50px;
+	h1{
+		font-size:3em;
+		color:$darkgray;
+		text-shadow: 0 1px 0 rgba(255,255,255,0.22);
+	}	
+}
+.main-content.green-back{
+	background-color:$colorBack;
+	color:#fff;
+	h1{
+		color:$darkgreen;
+	}
+	p{
+		color:#fff;
+	}
+}
+.section-row{
+	@include displayFlex(flex);	
+	flex-flow: row wrap;
+	justify-content: space-around;
+	.cell{
+		padding:0 20px;
+		flex:1;
+	}	
+}
+.section-column{
+	@include displayFlex(flex);
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+	.cell{
+		padding:0 20px;		
+	}
+}
+
+section{
+	height:auto;	
+	display:block;		
+}
+.quote{
+	font-size:5em;
+	font-family: Arial !important;
+}
+.quote-last{
+	@extend .quote;
+	line-height: 1px;
+	vertical-align: bottom;
+	
+}
+
+/*************FORMS**************/
+
+.input-forms{
+	.cell{
+		max-width:50%;
+	}
+	input, select, textarea{
+		margin-bottom:17px;
+		
+	}
+	
+}
+/**************CARDS*************/
+.card-table{	
+	border:1px solid $grayBorder;
+	box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
+	margin-bottom:30px;
+	ul{
+		margin:0;
+		list-style-type: none;
+		text-align: center;
+		padding:0;
+		li.card-header{			
+			font-size:1.5em;
+			background:$colorBack;
+			color:#fff;
+		}
+		li{
+			padding:15px;
+			border-bottom:1px solid $grayBorder;
+			margin:0;
+			color:$dark;
+		}		
+	}
+}
+
+/************GMAPS*************/
+#gmap{
+	width:100%;
+	height:600px;
+}
